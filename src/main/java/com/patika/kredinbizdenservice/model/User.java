@@ -15,22 +15,34 @@ public class User {
     private List<Application> applicationList;
 
     public User(String name, String surname, LocalDate birthDate, String email, String password, String phoneNumber, Boolean isActive) {
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.isActive = isActive;
+        if(!UserRepository.isEmailAlreadyExists(email)) {
+        	this.name = name;
+            this.surname = surname;
+            this.birthDate = birthDate;
+            this.email = email;
+            this.password = password;
+            this.phoneNumber = phoneNumber;
+            this.isActive = isActive;
+            UserRepository.saveUser(this);
+        }
+        else {
+        	System.out.println("Bu e-posta adresi zaten kayıtlı!");
+        }
     }
 
     public User(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.isActive = isActive;
+    	if(!UserRepository.isEmailAlreadyExists(email)) {
+        	this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.password = password;
+            this.phoneNumber = phoneNumber;
+            this.isActive = isActive;
+            UserRepository.saveUser(this);
+        }
+        else {
+        	System.out.println("Bu e-posta adresi zaten kayıtlı!");
+        }
     }
 
     public String getName() {
