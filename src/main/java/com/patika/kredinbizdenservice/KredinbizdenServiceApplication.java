@@ -1,4 +1,4 @@
-package com.patika.kredinbizdenservice;
+/*package com.patika.kredinbizdenservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,4 +10,4 @@ public class KredinbizdenServiceApplication {
         SpringApplication.run(KredinbizdenServiceApplication.class, args);
     }
 
-}
+}*/

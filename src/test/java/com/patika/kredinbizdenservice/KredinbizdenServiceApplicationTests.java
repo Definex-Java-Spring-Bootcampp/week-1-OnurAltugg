@@ -1,4 +1,4 @@
-package com.patika.kredinbizdenservice;
+/*package com.patika.kredinbizdenservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class KredinbizdenServiceApplicationTests {
     void contextLoads() {
     }
 
-}
+}*/
