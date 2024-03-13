@@ -4,6 +4,8 @@ package com.patika.kredinbizdenservice.model;
 import com.patika.kredinbizdenservice.enums.ApplicationStatus;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
@@ -12,6 +14,8 @@ public class Application {
     private User user;
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
+	private static final List<User> applications = new ArrayList<>();
+
 
     private Application() {
     }
@@ -68,6 +72,26 @@ public class Application {
 
     public void setApplicationStatus(ApplicationStatus applicationStatus) {
         this.applicationStatus = applicationStatus;
+    }
+    
+    public static User findUserWithMostApplications() {
+        if (applications.isEmpty()) {
+            System.out.println("Henüz bir başvuru yok.");
+            return null;
+        }
+        applications.sort((user1, user2) -> 
+        							Integer.compare(getApplicationCount(user2), getApplicationCount(user1)));
+        return applications.get(0);
+    }
+
+    private static int getApplicationCount(User theUser) {
+        int count = 0;
+        for (User user : applications) {
+            if (user.equals(theUser)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
