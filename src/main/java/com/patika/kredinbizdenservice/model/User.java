@@ -1,7 +1,10 @@
 package com.patika.kredinbizdenservice.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
 
@@ -20,7 +23,7 @@ public class User {
             this.surname = surname;
             this.birthDate = birthDate;
             this.email = email;
-            this.password = password;
+            this.password = shaHashCode(password);
             this.phoneNumber = phoneNumber;
             this.isActive = isActive;
             UserRepository.saveUser(this);
@@ -35,7 +38,7 @@ public class User {
         	this.name = name;
             this.surname = surname;
             this.email = email;
-            this.password = password;
+            this.password = shaHashCode(password);
             this.phoneNumber = phoneNumber;
             this.isActive = isActive;
             UserRepository.saveUser(this);
@@ -108,4 +111,21 @@ public class User {
     public void setApplicationList(List<Application> applicationList) {
         this.applicationList = applicationList;
     }
+
+	private String shaHashCode(String password) {
+		try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] hashedBytes = md.digest(password.getBytes());
+
+            StringBuilder hexStringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                hexStringBuilder.append(String.format("%02x", b));
+            }
+            return hexStringBuilder.toString();
+        } 
+		catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Şifreleme hatası: " + e.getMessage());
+        }
+	}
+  
 }
