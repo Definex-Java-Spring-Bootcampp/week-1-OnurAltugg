@@ -14,8 +14,8 @@ public class Application {
     private User user;
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
-	private static final List<User> applications = new ArrayList<>();
-
+	private static final List<User> applicationsOfUsers = new ArrayList<>();
+	private static final List<Application> allAplications = new ArrayList<>();
 
     private Application() {
     }
@@ -33,6 +33,8 @@ public class Application {
         this.user = user;
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
+        applicationsOfUsers.add(user);
+        allAplications.add(this);
     }
 
     public Application(Loan loan, User user, LocalDateTime localDateTime) {
@@ -40,6 +42,8 @@ public class Application {
         this.user = user;
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
+        applicationsOfUsers.add(user);
+        allAplications.add(this);
     }
 
     public Loan getLoan() {
@@ -75,23 +79,31 @@ public class Application {
     }
     
     public static User findUserWithMostApplications() {
-        if (applications.isEmpty()) {
+        if (applicationsOfUsers.isEmpty()) {
             System.out.println("Henüz bir başvuru yok.");
             return null;
         }
-        applications.sort((user1, user2) -> 
+        applicationsOfUsers.sort((user1, user2) -> 
         							Integer.compare(getApplicationCount(user2), getApplicationCount(user1)));
-        return applications.get(0);
+        return applicationsOfUsers.get(0);
     }
 
     private static int getApplicationCount(User theUser) {
         int count = 0;
-        for (User user : applications) {
+        for (User user : applicationsOfUsers) {
             if (user.equals(theUser)) {
                 count++;
             }
         }
         return count;
+    }
+    
+    public static void applicationsOfUserWithEmail(String email){
+    	for (Application application : allAplications) {
+			if(application.getUser().getEmail().equals(email)) {
+				System.out.println(application);;
+			}
+		}
     }
 
     @Override
