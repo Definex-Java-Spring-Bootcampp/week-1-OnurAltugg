@@ -36,4 +36,9 @@ public class Bill {
 		this.totalAmount = totalAmount;
 	}
 
+	@Override
+	public String toString() {
+		return "Bill [products=" + products + ", totalAmount=" + totalAmount + "]";
+	}
+
 }
