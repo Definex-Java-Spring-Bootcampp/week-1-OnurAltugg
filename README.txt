@@ -11,6 +11,6 @@
 	4) 4.sorunun 4.kısmında Application classında method (findMaxLoan) yaratıldı.
 	7) 4.sorunun 7.kısmında Application classında method (applicationsOfUserWithEmail) yaratıldı.
 	
-5) 5.soru için com.patika.kredinbizdenservice.shopping package'e Customer, Bill, Order ve Product classları eklendi. 
-com.patika.kredinbizdenservice.enums package'e Category enum'ı eklendi. com.patika.kredinbizdenservice'e 
-ShoppingMain classı eklendi ve işlemler buradan yapıldı.
+5) 5.soru için com.patika.kredinbizdenservice.shopping package'e Customer, Bill, Order ve Product classları 
+eklendi. com.patika.kredinbizdenservice.enums package'e Category enum'ı eklendi. 
+com.patika.kredinbizdenservice'e ShoppingMain classı eklendi ve işlemler buradan yapıldı.
