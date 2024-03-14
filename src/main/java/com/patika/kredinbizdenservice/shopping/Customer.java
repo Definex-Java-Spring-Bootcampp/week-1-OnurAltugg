@@ -15,7 +15,7 @@ public class Customer {
     private String password; 
     private String phoneNumber;
     private Boolean isActive;
-    private static final List<Customer> customers = new ArrayList<>();
+    private static List<Customer> customers = new ArrayList<>();
     private List<Order> orders;
 
     public Customer(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
@@ -88,6 +88,10 @@ public class Customer {
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+	
+	public static List<Customer> getCustomers() {
+	    return new ArrayList<>(customers);
 	}
 
 	@Override
