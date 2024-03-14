@@ -2,7 +2,13 @@ package com.patika.kredinbizdenservice.enums;
 
 public enum Category {
 	
-	ELECTRONIC,
+	ELECTRONICS,
+	CLOTHING,
+	FOOD,
+	BOOKS,
+	TOYS,
+	FURNITURE,
+	COSMETICS,
+	SPORTS
 	
-
 }
