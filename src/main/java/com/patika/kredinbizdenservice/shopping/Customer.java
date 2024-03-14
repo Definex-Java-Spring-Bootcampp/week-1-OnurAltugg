@@ -19,7 +19,7 @@ public class Customer {
     private List<Order> orders;
 
     public Customer(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
-    	if(isEmailAlreadyExists(email)) {
+    	if(!isEmailAlreadyExists(email)) {
         	this.name = name;
             this.surname = surname;
             this.email = email;
