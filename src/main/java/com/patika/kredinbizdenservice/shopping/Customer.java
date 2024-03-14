@@ -14,17 +14,19 @@ public class Customer {
     private String email; 
     private String password; 
     private String phoneNumber;
+    private int age;
     private Boolean isActive;
     private static List<Customer> customers = new ArrayList<>();
     private List<Order> orders;
 
-    public Customer(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
+    public Customer(String name, String surname, String email, String password, String phoneNumber, int age, Boolean isActive) {
     	if(!isEmailAlreadyExists(email)) {
         	this.name = name;
             this.surname = surname;
             this.email = email;
             this.password = shaHashCode(password);
             this.phoneNumber = phoneNumber;
+            this.age = age;
             this.isActive = isActive;
             this.setOrders(new ArrayList<>());
             customers.add(this);
@@ -74,7 +76,15 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Boolean getActive() {
+    public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public Boolean getActive() {
         return isActive;
     }
 
@@ -92,6 +102,10 @@ public class Customer {
 	
 	public static List<Customer> getCustomers() {
 	    return new ArrayList<>(customers);
+	}
+	
+	public void addOrder(Order order) {
+		orders.add(order);
 	}
 
 	@Override
