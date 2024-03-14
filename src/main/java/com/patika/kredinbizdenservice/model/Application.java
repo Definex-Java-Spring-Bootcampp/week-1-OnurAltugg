@@ -3,6 +3,7 @@ package com.patika.kredinbizdenservice.model;
 
 import com.patika.kredinbizdenservice.enums.ApplicationStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,27 @@ public class Application {
     	for (Application application : user.getApplicationList()) {
     		System.out.println(application);
 		}
+    }
+    
+    public static void findMaxLoan() {
+        User userWithMaxLoan = null;
+        BigDecimal maxLoan = BigDecimal.ZERO; 
+
+        for (User user : applicationsOfUsers) {
+            for (Application application : user.getApplicationList()) {
+                BigDecimal loanAmount = application.getLoan().getAmount();
+                if (loanAmount.compareTo(maxLoan) > 0) {
+                    maxLoan = loanAmount;
+                    userWithMaxLoan = user;
+                }
+            }
+        }
+        if (userWithMaxLoan != null) {
+            System.out.println(userWithMaxLoan + " -> " + maxLoan);
+        } 
+        else {
+            System.out.println("Herhangi bir kredi başvurusu bulunamadı.");
+        }
     }
 
     @Override
