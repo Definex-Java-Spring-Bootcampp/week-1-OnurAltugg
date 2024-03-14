@@ -15,7 +15,6 @@ public class Application {
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
 	private static final List<User> applicationsOfUsers = new ArrayList<>();
-	private static final List<Application> allAplications = new ArrayList<>();
 
     private Application() {
     }
@@ -34,7 +33,7 @@ public class Application {
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
         applicationsOfUsers.add(user);
-        allAplications.add(this);
+        user.getApplicationList().add(this);
     }
 
     public Application(Loan loan, User user, LocalDateTime localDateTime) {
@@ -43,7 +42,7 @@ public class Application {
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
         applicationsOfUsers.add(user);
-        allAplications.add(this);
+        user.getApplicationList().add(this);
     }
 
     public Loan getLoan() {
@@ -99,10 +98,14 @@ public class Application {
     }
     
     public static void applicationsOfUserWithEmail(String email){
-    	for (Application application : allAplications) {
-			if(application.getUser().getEmail().equals(email)) {
-				System.out.println(application);;
+    	User user = null;
+    	for(User theUser: applicationsOfUsers) {
+    		if(theUser.getEmail().equals(email)) {
+				user = theUser;
 			}
+    	}
+    	for (Application application : user.getApplicationList()) {
+    		System.out.println(application);
 		}
     }
 

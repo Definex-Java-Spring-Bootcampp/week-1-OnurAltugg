@@ -3,6 +3,7 @@ package com.patika.kredinbizdenservice.model;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,6 +32,7 @@ public class User {
         else {
         	System.out.println("Bu e-posta adresi zaten kayıtlı!");
         }
+        applicationList = new ArrayList<>();
     }
 
     public User(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
@@ -46,6 +48,7 @@ public class User {
         else {
         	System.out.println("Bu e-posta adresi zaten kayıtlı!");
         }
+    	applicationList = new ArrayList<>();
     }
 
     public String getName() {
@@ -111,6 +114,12 @@ public class User {
     public void setApplicationList(List<Application> applicationList) {
         this.applicationList = applicationList;
     }
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", surname=" + surname + ", birthDate=" + birthDate + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + "]";
+	}
 
 	private String shaHashCode(String password) {
 		try {
