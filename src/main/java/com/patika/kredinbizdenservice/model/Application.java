@@ -15,7 +15,6 @@ public class Application {
     private User user;
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
-	private static final List<User> applicationsOfUsers = new ArrayList<>();
 
     private Application() {
     }
@@ -33,7 +32,6 @@ public class Application {
         this.user = user;
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
-        applicationsOfUsers.add(user);
         user.getApplicationList().add(this);
     }
 
@@ -42,7 +40,6 @@ public class Application {
         this.user = user;
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
-        applicationsOfUsers.add(user);
         user.getApplicationList().add(this);
     }
 
@@ -79,28 +76,23 @@ public class Application {
     }
     
     public static User findUserWithMostApplications() {
-        if (applicationsOfUsers.isEmpty()) {
-            System.out.println("Henüz bir başvuru yok.");
-            return null;
-        }
-        applicationsOfUsers.sort((user1, user2) -> 
-        							Integer.compare(getApplicationCount(user2), getApplicationCount(user1)));
-        return applicationsOfUsers.get(0);
-    }
-
-    private static int getApplicationCount(User theUser) {
-        int count = 0;
-        for (User user : applicationsOfUsers) {
-            if (user.equals(theUser)) {
-                count++;
+        int maxApplicationNumber = Integer.MIN_VALUE;
+        User theUser = null;
+        for (User user : UserRepository.getUsers()) {
+            if (maxApplicationNumber < user.getApplicationList().size()) {
+            	maxApplicationNumber = user.getApplicationList().size();
+            	theUser = user;
             }
         }
-        return count;
+        if(theUser == null) {
+        	System.out.println("Henüz herhangi bir kullanıcı başvuru yapmadı.");
+        }
+        return theUser;
     }
     
     public static void applicationsOfUserWithEmail(String email){
     	User user = null;
-    	for(User theUser: applicationsOfUsers) {
+    	for(User theUser: UserRepository.getUsers()) {
     		if(theUser.getEmail().equals(email)) {
 				user = theUser;
 			}
@@ -114,7 +106,7 @@ public class Application {
         User userWithMaxLoan = null;
         BigDecimal maxLoan = BigDecimal.ZERO; 
 
-        for (User user : applicationsOfUsers) {
+        for (User user : UserRepository.getUsers()) {
             for (Application application : user.getApplicationList()) {
                 BigDecimal loanAmount = application.getLoan().getAmount();
                 if (loanAmount.compareTo(maxLoan) > 0) {
