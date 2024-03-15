@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Month;
 
 import com.patika.kredinbizdenservice.model.Application;
+import com.patika.kredinbizdenservice.model.ApplicationOperation;
 import com.patika.kredinbizdenservice.model.ConsumerLoan;
 import com.patika.kredinbizdenservice.model.Loan;
 import com.patika.kredinbizdenservice.model.User;
@@ -25,21 +26,23 @@ public class Main {
 		
 		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), null, null), user1, null);
 		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), null, null), user1, null);
-		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(2.3), null, null), user3, null);
+		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), null, null), user3, null);
 		
 		//password hashlendi. user1'in hash passwordu.
 		System.out.println(user1.getPassword());
 		System.out.println();
 		
 		//en çok başvuran kullanıcı
-		System.out.println(Application.findUserWithMostApplications());
+		System.out.println(ApplicationOperation.findUserWithMostApplications());
+		System.out.println();
+		
+		//max loanı ve user bilgisini bulma
+		ApplicationOperation.findMaxLoan();
 		System.out.println();
 		
 		//mail girererek kullanıcının başvuralını görüntüleme
-		Application.applicationsOfUserWithEmail("onur7altug@gmail.com");
+		ApplicationOperation.applicationsOfUserWithEmail("onur7altug@gmail.com");
 		
-		//max loanı ve user bilgisini bulma
-		Application.findMaxLoan();
 	}
 
 }
