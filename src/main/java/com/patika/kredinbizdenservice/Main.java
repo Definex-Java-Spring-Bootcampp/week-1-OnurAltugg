@@ -24,9 +24,12 @@ public class Main {
 
 		System.out.println();
 		
-		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), null, null), user1, null);
-		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), null, null), user1, null);
-		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), null, null), user3, null);
+		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), 10, 10.2),
+				user1, null);
+		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), 6, 5.6),
+				user1, null);
+		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), 8, 4.8),
+				user3, null);
 		
 		//password hashlendi. user1'in hash passwordu.
 		System.out.println(user1.getPassword());

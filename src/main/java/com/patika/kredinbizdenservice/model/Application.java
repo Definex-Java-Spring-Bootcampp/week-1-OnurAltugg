@@ -16,8 +16,7 @@ public class Application {
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
 
-    private Application() {
-    }
+    public Application() {}
 
     /*
     public Application(CreditCard creditCard, User user, LocalDateTime localDateTime) {

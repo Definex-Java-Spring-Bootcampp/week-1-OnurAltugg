@@ -22,6 +22,14 @@ public class ConsumerLoan extends Loan {
     public LoanType getLoanType() {
         return loanType;
     }
+    
+    public List<Integer> getInstallmentOptions() {
+		return installmentOptions;
+	}
+
+	public void setInstallmentOptions(List<Integer> installmentOptions) {
+		this.installmentOptions = installmentOptions;
+	}
 
     @Override
     void calculate(BigDecimal amount, int installment) {

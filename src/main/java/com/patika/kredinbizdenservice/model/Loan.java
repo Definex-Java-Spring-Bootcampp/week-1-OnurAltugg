@@ -8,7 +8,7 @@ public abstract class Loan implements Product {
     private Integer installment;
     private Bank bank;
     private Double interestRate;
-    // private Campaign campaign; // kampanyalı kredileri üstte çıkart
+    private Campaign campaign; // kampanyalı kredileri üstte çıkart
 
     //sponsorlu kampanyaları üstte çıkart
 
@@ -55,7 +55,15 @@ public abstract class Loan implements Product {
         this.interestRate = interestRate;
     }
 
-    @Override
+    public Campaign getCampaign() {
+		return campaign;
+	}
+
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
+	}
+
+	@Override
     public String toString() {
         return "Loan{" +
                 "amount=" + amount +

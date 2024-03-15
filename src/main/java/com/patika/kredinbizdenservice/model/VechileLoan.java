@@ -22,7 +22,15 @@ public class VechileLoan extends Loan {
         return loanType;
     }
 
-    @Override
+    public VechileStatuType getVechileStatuType() {
+		return vechileStatuType;
+	}
+
+	public void setVechileStatuType(VechileStatuType vechileStatuType) {
+		this.vechileStatuType = vechileStatuType;
+	}
+
+	@Override
     void calculate(BigDecimal amount, int installment) {
         //istediği kadar ödeme yapabilir.
     }
