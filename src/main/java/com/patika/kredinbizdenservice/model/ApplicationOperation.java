@@ -42,6 +42,9 @@ public class ApplicationOperation {
 
         for (User user : UserRepository.getUsers()) {
             for (Application application : user.getApplicationList()) {
+            	if(application.getLoan() == null) {
+            		continue;
+            	}
                 BigDecimal loanAmount = application.getLoan().getAmount();
                 if (loanAmount.compareTo(maxLoan) > 0) {
                     maxLoan = loanAmount;

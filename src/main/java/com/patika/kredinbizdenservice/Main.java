@@ -2,12 +2,13 @@ package com.patika.kredinbizdenservice;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 
 import com.patika.kredinbizdenservice.model.Application;
 import com.patika.kredinbizdenservice.model.ApplicationOperation;
 import com.patika.kredinbizdenservice.model.ConsumerLoan;
-import com.patika.kredinbizdenservice.model.Loan;
+import com.patika.kredinbizdenservice.model.CreditCard;
 import com.patika.kredinbizdenservice.model.User;
 import com.patika.kredinbizdenservice.model.VechileLoan;
 
@@ -25,11 +26,12 @@ public class Main {
 		System.out.println();
 		
 		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), 10, 10.2),
-				user1, null);
+				user1, LocalDateTime.now());
 		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), 6, 5.6),
-				user1, null);
+				user1, LocalDateTime.of(2024, 3, 16, 15, 30));
 		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), 8, 4.8),
-				user3, null);
+				user3, LocalDateTime.of(2023, 2, 20, 18, 20));
+		
 		
 		//password hashlendi. user1'in hash passwordu.
 		System.out.println(user1.getPassword());

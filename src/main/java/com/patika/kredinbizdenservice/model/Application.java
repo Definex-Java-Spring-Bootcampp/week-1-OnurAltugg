@@ -15,16 +15,17 @@ public class Application {
     private User user;
     private LocalDateTime localDateTime;
     private ApplicationStatus applicationStatus;
+    private CreditCard creditCard;
 
     public Application() {}
 
-    /*
+    
     public Application(CreditCard creditCard, User user, LocalDateTime localDateTime) {
         this.creditCard = creditCard;
         this.user = user;
         this.localDateTime = localDateTime;
         this.applicationStatus = ApplicationStatus.INITIAL;
-    }*/
+    }
 
     public Application(Product product, User user, LocalDateTime localDateTime) {
         this.product = product;
@@ -74,7 +75,16 @@ public class Application {
         this.applicationStatus = applicationStatus;
     }
     
-    @Override
+    public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
+	@Override
     public String toString() {
         return "Application{" +
                 "loan=" + loan +
