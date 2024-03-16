@@ -2,8 +2,7 @@
 
 2) 2.soru Question_2 dosyasının içinde pdf olarak bulunabilir.
 
-3) 3.soru için com.patika.kredinbizdenservice.pattern package'e Manager classı eklendi. Ve bizimkredi projemizdeki objeler buradan 
-oluşturuldu.
+3) 3.soru için com.patika.kredinbizdenservice.pattern package'e Manager classı eklendi. Ve bizimkredi projemizdeki objeler buradan oluşturuldu.
 
 4)
 	1) 4.sorunun 1.kısmı için email kuralı implementationu  UserRepository classının içinde yapıldı ve User classında çağrıldı.
