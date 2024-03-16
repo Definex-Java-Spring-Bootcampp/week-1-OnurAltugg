@@ -51,7 +51,16 @@ public class Application {
         this.loan = loan;
     }
 
-    public User getUser() {
+    public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+	public User getUser() {
         return user;
     }
 
