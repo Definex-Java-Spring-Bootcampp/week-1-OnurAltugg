@@ -1,5 +1,6 @@
 package com.patika.kredinbizdenservice.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
@@ -7,6 +8,12 @@ public class Bank {
     private String name;
     private List<Loan> loanList;
     private List<CreditCard> creditCards;
+    
+    public Bank(String name) {
+    	this.name = name;
+    	loanList = new ArrayList<>();
+    	creditCards = new ArrayList<>();
+    }
 
     public String getName() {
         return name;

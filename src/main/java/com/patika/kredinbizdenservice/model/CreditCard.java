@@ -1,6 +1,7 @@
 package com.patika.kredinbizdenservice.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreditCard implements Product{
@@ -46,4 +47,5 @@ public class CreditCard implements Product{
                 ", bank=" + bank +
                 '}';
     }
+    
 }
