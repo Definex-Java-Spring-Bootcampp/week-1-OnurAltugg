@@ -1,6 +1,8 @@
 package com.patika.kredinbizdenservice.model;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class ApplicationOperation {
 	
@@ -32,6 +34,7 @@ public class ApplicationOperation {
     	else {
     		for (Application application : user.getApplicationList()) {
         		System.out.println(application);
+        		System.out.println();
     		}
     	}
     }
@@ -57,6 +60,18 @@ public class ApplicationOperation {
         } 
         else {
             System.out.println("Herhangi bir kredi başvurusu bulunamadı.");
+        }
+    }
+    
+    public static void applicationsMadeLastMonth(){
+    	for (User user : UserRepository.getUsers()) {
+            for (Application application : user.getApplicationList()) {
+            	Duration duration = Duration.between(LocalDateTime.now(), application.getLocalDateTime());
+            	if(Math.abs(duration.toDays()) < 31) {
+            		System.out.println(application);
+            		System.out.println();
+            	}
+            }
         }
     }
 

@@ -28,24 +28,28 @@ public class Main {
 		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), 10, 10.2),
 				user1, LocalDateTime.now());
 		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), 6, 5.6),
-				user1, LocalDateTime.of(2024, 3, 16, 15, 30));
+				user1, LocalDateTime.of(2023, 2, 20, 15, 30));
 		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), 8, 4.8),
-				user3, LocalDateTime.of(2023, 2, 20, 18, 20));
+				user3, LocalDateTime.of(2024, 3, 16, 18, 20));
 		
 		
-		//password hashlendi. user1'in hash passwordu.
+		System.out.println("password hashlendi. user1'in hashlenmiş passwordu:");
 		System.out.println(user1.getPassword());
 		System.out.println();
 		
-		//en çok başvuran kullanıcı
+		System.out.println("En çok başvury yapan kullanıcı:");
 		System.out.println(ApplicationOperation.findUserWithMostApplications());
 		System.out.println();
 		
-		//max loanı ve user bilgisini bulma
+		System.out.println("En yüksek kredi isteyen kullanıcı ve istediği tutar:");
 		ApplicationOperation.findMaxLoan();
 		System.out.println();
 		
-		//mail girererek kullanıcının başvuralını görüntüleme
+		System.out.println("Son 30 gün içersinde yapılan başvurular:");
+		ApplicationOperation.applicationsMadeLastMonth();
+		System.out.println();
+		
+		System.out.println("onur7altug@gmail.com mailine sahip kullanıcının başvuruları:");
 		ApplicationOperation.applicationsOfUserWithEmail("onur7altug@gmail.com");
 		
 	}

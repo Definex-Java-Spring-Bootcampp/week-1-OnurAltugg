@@ -9,6 +9,7 @@
 	2) 4.sorunun 2.kısmında User classında shaHashCode methodu oluşturuldu ve constructor esnasında password hashlandi.
 	3) 4.sorunun 3.kısmında ApplicationRepository classında method (findUserWithMostApplications) yaratıldı.
 	4) 4.sorunun 4.kısmında ApplicationRepository classında method (findMaxLoan) yaratıldı.
+	5) 4.sorunun 5.kısmında ApplicationRepository classında method (applicationsMadeLastMonth) yaratıldı.
 	7) 4.sorunun 7.kısmında ApplicationRepository classında method (applicationsOfUserWithEmail) yaratıldı.
 	
 5) 5.soru için com.patika.kredinbizdenservice.shopping package'e Customer, Bill, Order ve Product classları 
