@@ -18,29 +18,32 @@ import com.patika.kredinbizdenservice.model.CreditCardOperation;
 import com.patika.kredinbizdenservice.model.Product;
 import com.patika.kredinbizdenservice.model.User;
 import com.patika.kredinbizdenservice.model.VechileLoan;
+import com.patika.kredinbizdenservice.pattern.Manager;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Bank bank = new Bank("Akbank");
+		Manager manager = Manager.getManager();
+		
+		Bank bank = manager.createBank("Akbank");
 		
 		//aynı mail ile user yaratamıyoruz. user2 yaratilmayacak.
-		User user1 = new User("Onur Altug", "Akca", LocalDate.of(1999, Month.MARCH, 15), 
+		User user1 = manager.createUser("Onur Altug", "Akca", LocalDate.of(1999, Month.MARCH, 15), 
 				"onur7altug@gmail.com", "1234", "05363544235", true);
-		User user2 = new User("Ozan", "Akca", LocalDate.of(1994, Month.MARCH, 15), 
+		User user2 = manager.createUser("Ozan", "Akca", LocalDate.of(1994, Month.MARCH, 15), 
 				"onur7altug@gmail.com", "1234", "05362341198", true);
-		User user3 = new User("Ozan", "Akca", LocalDate.of(1994, Month.JUNE, 30), 
+		User user3 = manager.createUser("Ozan", "Akca", LocalDate.of(1994, Month.JUNE, 30), 
 				"ozanakca@gmail.com", "1234", "05362341198", true);
 		
-		Campaign marketCampaign = new Campaign(
-                "Market Kampanya",
+		Campaign marketCampaign = manager.createCampaign(
+				"Market Kampanya",
                 "Bu bir market kampanya içeriğidir.",
                 LocalDate.of(2024, 4, 30), 
                 LocalDate.of(2024, 3, 1),  
                 LocalDate.of(2024, 3, 10), 
                 SectorType.MARKET
-        );
-		Campaign travelCampaign = new Campaign(
+				);
+		Campaign travelCampaign = manager.createCampaign(
                 "Travel Kampanya",
                 "Bu bir ulaşım kampanya içeriğidir.",
                 LocalDate.of(2024, 5, 15), 
@@ -48,7 +51,7 @@ public class Main {
                 LocalDate.of(2024, 2, 28), 
                 SectorType.TRAVELS
         );
-		Campaign foodCampaign = new Campaign(
+		Campaign foodCampaign = manager.createCampaign(
                 "Yemek Kampanya",
                 "Bu bir yemek kampanya içeriğidir.",
                 LocalDate.of(2024, 10, 15), 
@@ -64,17 +67,18 @@ public class Main {
 		campaignsOfVisa.add(foodCampaign);
 		campaignsOfVisa.add(travelCampaign);
 		
-		CreditCard masterCard = new CreditCard(BigDecimal.valueOf(1.1), campaignsOfMaster);
-		CreditCard visaCard = new CreditCard(BigDecimal.valueOf(2.1), campaignsOfVisa);
 		
-		bank.getCreditCards().add(masterCard);
-		bank.getCreditCards().add(visaCard);
+		Product masterCard = manager.createCreditCard(BigDecimal.valueOf(1.1), campaignsOfMaster);
+		Product visaCard = manager.createCreditCard(BigDecimal.valueOf(2.1), campaignsOfVisa);
 		
-		Application application1 = new Application(new ConsumerLoan(BigDecimal.valueOf(3.3), 10, 10.2),
+		bank.getCreditCards().add((CreditCard) masterCard);
+		bank.getCreditCards().add((CreditCard) visaCard);
+		
+		Application application1 = manager.createApplication(manager.createConsumerLoan(BigDecimal.valueOf(3.3), 10, 10.2),
 				user1, LocalDateTime.now());
-		Application application2 = new Application(new ConsumerLoan(BigDecimal.valueOf(7.3), 6, 5.6),
+		Application application2 = manager.createApplication(manager.createConsumerLoan(BigDecimal.valueOf(7.3), 6, 5.6),
 				user1, LocalDateTime.of(2023, 2, 20, 15, 30));
-		Application application3 = new Application(new VechileLoan(BigDecimal.valueOf(22.3), 8, 4.8),
+		Application application3 = manager.createApplication(manager.createVehicleLoan(BigDecimal.valueOf(22.3), 8, 4.8),
 				user3, LocalDateTime.of(2024, 3, 16, 18, 20));
 		
 		System.out.println();
